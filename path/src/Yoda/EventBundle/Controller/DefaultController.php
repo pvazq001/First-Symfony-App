@@ -9,17 +9,17 @@ class DefaultController extends Controller
     public function indexAction($firstName, $count)
     {
         
-        $em = $this->getDoctrine()->getManager();
-        $repo = $em->getRepository('EventBundle:Event');
-        
-        $event = $repo->findOneBy(array(
-           "name"   => 'Darth\'s surprise birthday part ',
-        ));
+//        $em = $this->getDoctrine()->getManager();
+//        $repo = $em->getRepository('EventBundle:Event');
+//        
+//        $event = $repo->findOneBy(array(
+//           "name"   => 'Darth\'s surprise birthday part ',
+//        ));
         
         return $this->render('EventBundle:Default:index.html.twig', array(
             'name' => $firstName,
             'count' => $count,
-            'event' => $event,
+//            'event' => $event,
             ));
         
         //Example 1
