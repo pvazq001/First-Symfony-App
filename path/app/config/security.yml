@@ -19,10 +19,10 @@ security:
 
     firewalls:
         secured_area:
-            pattern:    ^/event
+            pattern:    ^/
             form_login:
-                check_path: login_check
-                login_path: login
+                check_path: /login_check
+                login_path: /login
             logout:
                 path:   /logout
                 target: /
@@ -31,6 +31,6 @@ security:
             #    realm: "Secured Demo Area"
 
     access_control:
-            - { path: /new, roles: ROLE_USER }
-            - { path: /create, roles: ROLE_USER }
+            - { path: ^/event/new, roles: ROLE_USER }
+            - { path: ^/event/create, roles: ROLE_USER }
         #- { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }
