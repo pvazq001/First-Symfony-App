@@ -1,11 +1,18 @@
 {% extends 'EventBundle::layout.html.twig' %}
 
+{% block stylesheets %}
+
+    {{ parent() }}
+
+    <link rel="stylesheet" href="{{ asset('bundles/user/css/login.css') }}" />
+{% endblock %}
+
 {% block body %}
 
     <section class="login">
         <article>
             {% if error %}
-                <div>{{ error.message }}</div>
+                <div class="error">{{ error.message|trans }}</div>
             {% endif %}
 
             <form action="{{ path('login_check') }}" method="post">

@@ -8,6 +8,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Yoda\EventBundle\Entity\Event;
 use Yoda\EventBundle\Form\EventType;
 
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
+
 /**
  * Event controller.
  *
@@ -59,6 +61,11 @@ class EventController extends Controller
      */
     public function newAction()
     {
+        $securityContext = $this->container->get('security.context');
+        if (!$securityContext->isGranted("ROLE_ADMIN")) {
+            throw new AccessDeniedException("Only an admin can do this!");
+        }
+        
         $entity = new Event();
         $form   = $this->createForm(new EventType(), $entity);
 
